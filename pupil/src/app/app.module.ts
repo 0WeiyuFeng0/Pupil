@@ -8,11 +8,13 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { GoogleLoginComponent } from './google-login/google-login.component';
+import { SuperSecretComponent } from './super-secret/super-secret.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GoogleLoginComponent
+    GoogleLoginComponent,
+    SuperSecretComponent
   ],
   imports: [
     BrowserModule,
