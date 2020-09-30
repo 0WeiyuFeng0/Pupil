@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { DataHandlerService } from './services/data-handler.service';
 import { AuthService } from './services/auth.service';
 import { auth } from 'firebase/app';
 import { Component } from '@angular/core';
@@ -10,8 +12,16 @@ declare var generateMyChart: any;
 })
 export class AppComponent {
   title = 'pupil';
+  itemList: Observable<any>;
   onClick() {
     generateMyChart();
   }
-  constructor(public auth: AuthService) {}
+
+  addDataToDataBase(){
+    this.dataHandlerService.addData("asf","asdf");
+  }
+
+  constructor(public auth: AuthService, public dataHandlerService: DataHandlerService) {
+    this.itemList = dataHandlerService.getData().snapshotChanges();
+  }
 }

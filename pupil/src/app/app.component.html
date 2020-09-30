@@ -14,8 +14,24 @@
 
 </div>
 
+<div>
+    hi
+    <ul>
+        <li *ngFor = "let item of itemList | async">
+            {{item | json}}
+        </li>
+    </ul>
+    <button (click)="addDataToDataBase()" >Add</button>
+</div>
+
 <ng-template #login>
     <button class="button" (click)="auth.googleSignin()">Login with Google</button>
 </ng-template>
+
+<nav>
+    <ul>
+        <li><a routerLink="/login" routerLinkActive="active">Login Page</a></li>
+    </ul>
+</nav>
 
 <router-outlet></router-outlet>
