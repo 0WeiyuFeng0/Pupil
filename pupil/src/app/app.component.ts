@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 declare var generateMyChart: any;
+declare var initialPython: any;
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,7 @@ export class AppComponent {
   title = 'pupil';
   onClick() {
     generateMyChart();
+    initialPython();
   }
+  
 }
