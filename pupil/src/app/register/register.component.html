@@ -11,7 +11,6 @@
             Enter a valid email.
         </mat-error>
         
-        
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required formControlName="password">
         <mat-error *ngIf="registerPasswordControl.errors && registerPasswordControl.errors.required">
@@ -20,29 +19,13 @@
         <mat-error *ngIf="registerPasswordControl.errors && registerPasswordControl.errors.minlength">
             Password must be at least 8 characters long.
         </mat-error>
-        
-        <!-- <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div> -->
+
+        <label for="inputconfirmPassword" class="sr-only">confirmPassword</label>
+        <input type="password" id="inputconfirmPassword" class="form-control" placeholder="confirmPassword" required formControlName="confirmPassword">
+        <mat-error *ngIf="registerConfirmPasswordControl.errors && !registerPasswordControl.errors">
+            Passwords must match!
+        </mat-error>
         
         <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!loginForm.valid">Sing in</button>
     </form>
 </div>
-
-<!-- <div>
-    <form>
-        <div class="input">
-            <label>username</label>
-            <input type="text" name="username" [(ngModel)]="username">
-        </div>
-        <div class="input">
-            <label>password</label>
-            <input type="text" name="username" [(ngModel)]="password">
-        </div>
-        <div class="input">
-            <input type="submit" name="Login" (click)="getValue()">
-        </div>
-    </form>
-</div> -->

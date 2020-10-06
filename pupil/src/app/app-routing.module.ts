@@ -1,3 +1,4 @@
+import { RegisterComponent } from './register/register.component';
 import { logging } from 'protractor';
 import { AuthGuard } from './services/auth.guard';
 import { SuperSecretComponent } from './super-secret/super-secret.component';
@@ -9,6 +10,7 @@ import { LoginComponent } from './login/login.component'
 const routes: Routes = [
   
   { path: 'login', component: LoginComponent,},
+  { path: 'register', component: RegisterComponent,},
   { path: 'secret', component: SuperSecretComponent, canActivate: [AuthGuard] }
 ];
 

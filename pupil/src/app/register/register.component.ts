@@ -1,18 +1,17 @@
-import { DataHandlerService } from './../services/data-handler.service';
 import { Component, OnInit } from '@angular/core';
+import { DataHandlerService } from './../services/data-handler.service';
 import { FormGroup, FormControl, Validators, FormBuilder, NgForm, FormGroupDirective} from "@angular/forms"
 import { Observable } from 'rxjs';
 
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
   itemList: Observable<any>;
-
-  
 
   // username:string = '';
   // password:string = '';
@@ -24,13 +23,35 @@ export class LoginComponent implements OnInit {
   //   password: new FormControl(''),
   // });
 
-  loginForm = this.fb.group({
-    email:['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]]
+  MustMatch(controlName: string, matchingControlName: string) {
+
+    return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const matchingControl = formGroup.controls[matchingControlName];
+
+        // set error on matchingControl if validation fails
+        if (control.value !== matchingControl.value) {
+            matchingControl.setErrors({ mustMatch: true });
+        } else {
+            matchingControl.setErrors(null);
+        }
+    }
+}
+
+  loginForm = this.fb.group(
+    {
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)] )
+    },{
+      validator: this.MustMatch('password', 'confirmPassword')
   });
+
   
   get registerEmailControl() { return this.loginForm.get('email'); }
   get registerPasswordControl() { return this.loginForm.get('password'); }
+  get registerConfirmPasswordControl() { return this.loginForm.get('confirmPassword'); }
+
 
   addDataToDataBase(){
     this.dataHandler.addData(this.loginForm.value.email,this.loginForm.value.password);
@@ -42,27 +63,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  // getValue(){
-  //   // this.inputEmai = (<HTMLInputElement>document.getElementById("inputEmail")).value;
-  //   // this.inputPassword = (<HTMLInputElement>document.getElementById("inputEmail")).value;
-  //   // console.warn("email:" + this.inputEmai + " password:" + this.inputPassword)
-  //   if(this.username == "" || this.password == ""){
-  //     console.log("empty");
-  //     alert("empty")
-  //   }else{
-  //     console.log("username:" + this.username + " password:" + this.password);
-  //     alert("username:" + this.username + " password:" + this.password);
-  //   }
-  // }
   
 
   getEmail(){
     this.itemList.subscribe(item =>{
       item.forEach(element => {
-        if(element.payload.val().emai == this.loginForm.value.email && element.payload.val().password == this.loginForm.value.password){
+        if(element.payload.val().emai == this.loginForm.value.email){
           // console.log(element.payload.val().emai ,this.loginForm.value.email, element.payload.val().password, this.loginForm.value.password);
-          alert("you are in");
+          alert("Email already exist please login");
         }else{
           // console.log(element.payload.val().emai + "!=" +this.loginForm.value.email, element.payload.val().password + "!=" + this.loginForm.value.password);
         }
@@ -72,21 +80,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  //   this.itemList.forEach(item => {
-  //   //   this.userList = [];
-  //   //   userSnapshot.forEach(userSnapshot => {
-  //   //     let user = userSnapshot.payload.toJSON();
-  //   //     user['$key'] = userSnapshot.key;
-  //   //     this.userList.push(user as IUser);
-  //   //   })
-  //   // }
-  //   });
-  //  }
+  addUser(){
+    this.dataHandler.addData(this.loginForm.value.email, this.loginForm.value.password);
+    // addData(addEmail: String ,addPassword: String);
+  }
+
 
 
   onSubmit() {
     // console.warn(this.loginForm.value);
-    this.getEmail()
+    this.getEmail();
+    this.addUser();
 
     // this.addDataToDataBase()
 
