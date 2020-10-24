@@ -14,6 +14,13 @@ import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
+import { SideBarComponent } from './pages/side-bar/side-bar.component';
+import { PatientListComponent } from './pages/patient-list/patient-list.component';
+import { PatientCardComponent } from './pages/patient-card/patient-card.component';
+import { PatientComponent } from './pages/patient/patient.component';
+import { ListComponent } from './pages/list/list.component';
+import { DataAnalysisComponent } from './pages/data-analysis/data-analysis.component';
 
 
 
@@ -23,7 +30,14 @@ import { RegisterComponent } from './register/register.component';
     GoogleLoginComponent,
     SuperSecretComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavBarComponent,
+    SideBarComponent,
+    PatientListComponent,
+    PatientCardComponent,
+    PatientComponent,
+    ListComponent,
+    DataAnalysisComponent
   ],
   imports: [
     BrowserModule,

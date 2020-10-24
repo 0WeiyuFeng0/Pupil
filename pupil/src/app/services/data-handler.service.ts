@@ -29,7 +29,7 @@ export class DataHandlerService {
 
 
    addData(addEmail: String ,addPassword: String){
-    this.itemsRef.push({ emai: addEmail, password: addPassword});
+    this.itemsRef.push({ email: addEmail, password: addPassword});
    }
 
 }
