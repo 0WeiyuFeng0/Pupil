@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
       item.forEach(element => {
         if(element.payload.val().email == this.loginForm.value.email && element.payload.val().password == this.loginForm.value.password){
           userEmail = true;
+          this.dataHandler.loginSuccessful();
           this.router.navigate(['/list']);
         }
       });

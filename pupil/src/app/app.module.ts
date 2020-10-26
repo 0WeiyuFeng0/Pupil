@@ -1,3 +1,4 @@
+import { AuthJSONGuard } from './services/auth-json.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -50,7 +51,7 @@ import { DataAnalysisComponent } from './pages/data-analysis/data-analysis.compo
     FormsModule,      
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthJSONGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
