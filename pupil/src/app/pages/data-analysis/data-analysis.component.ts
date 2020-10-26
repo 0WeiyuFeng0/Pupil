@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var generateMyChart: any;
 
 @Component({
   selector: 'app-data-analysis',
@@ -8,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class DataAnalysisComponent implements OnInit {
 
   constructor() { }
+
+  onClick() {
+    generateMyChart();
+  }
 
   ngOnInit(): void {
   }
