@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-1" style="background-color:darkblue;">
+        <app-side-bar></app-side-bar>
+      </div>
+  
+      <div class="col-11" style="background-color:white;">
+        <app-nav-bar></app-nav-bar>
+
+        <div class="row">
+          <div class="container-fluid col-12" style="background-color: lightgrey; height: 880px;" >
+            
+            <form [formGroup]="addInfo" class="form-addInfo" (ngSubmit)="onSubmit()">
+                <h1 class="h3 mb-3 font-weight-normal">Please Fill In Your Information</h1>
+
+                <label for="inputPhoneNumber">Phone Number</label>
+                <input type="text" id="inputPhoneNumber" class="form-control" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" autofocus formControlName="phoneNumber">
+                <br>
+                <label for="inputProviderID">Healthcare Provider ID</label>
+                <input type="number" id="inputProviderID" class="form-control" placeholder="132456789" formControlName="providerID">
+                <br>
+                <label for="inputGroupID">Healthcare Group ID</label>
+                <input type="number" id="inputGroupID" class="form-control" placeholder="132456789" formControlName="groupID">
+                <br>
+                <label for="inputHeight">Height</label>
+                <input type="number" id="inputHeight" class="form-control" placeholder="185 CM" formControlName="height">
+                <br>
+                <label for="inputWeigh">Weigh</label>
+                <input type="number" id="inputWeigh" class="form-control" placeholder="185 LB" formControlName="weigh">
+                <br>
+                
+                <label for="inputBloodType">Blood Type</label>
+                <select (change)="selectBloodType($event)" class="form-control" id="inputBloodType">
+                    <option value="N/A">...</option>
+                    <option value="O+">O+</option>
+                    <option value="A+">A+</option>
+                    <option value="B+">B+</option>
+                    <option value="O-">O-</option>
+                    <option value="A-">A-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB-">AB-</option>
+                </select>
+                
+                <br>
+                
+                <label for="inputMedicalCondition">Medical Condition</label>
+                <select (change)="selectMedicalCondition($event)" class="form-control" id="inputMedicalCondition">
+                <option value="Concussion">Concussion</option>
+                <option value="TraumaticBrainInjury">Traumatic brain injury</option>
+                </select><br>
+
+                <br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!addInfo.valid">Save</button>
+            </form>
+
+        </div>
+  
+        
+      </div>
+    </div>
+  
+  </div>

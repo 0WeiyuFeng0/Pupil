@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
   get registerEmailControl() { return this.loginForm.get('email'); }
   get registerPasswordControl() { return this.loginForm.get('password'); }
 
-  addDataToDataBase(){
-    this.dataHandler.addData(this.loginForm.value.email,this.loginForm.value.password);
-  }
+  // addDataToDataBase(){
+  //   this.dataHandler.addData(this.loginForm.value.email,this.loginForm.value.password);
+  // }
 
   constructor(private fb: FormBuilder, public dataHandler: DataHandlerService, private router: Router) {
     this.itemList = dataHandler.getData().snapshotChanges();
@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
         if(element.payload.val().email == this.loginForm.value.email && element.payload.val().password == this.loginForm.value.password){
           userEmail = true;
           this.dataHandler.loginSuccessful();
-          this.router.navigate(['/list']);
+          this.dataHandler.saveUser(element.key);
+          this.router.navigate(['/patient']);
         }
       });
       
@@ -54,6 +55,16 @@ export class LoginComponent implements OnInit {
 
 
   }
+
+  // getEmail(){
+  //   var login:Boolean = this.dataHandler.checkLogin(this.loginForm.value.email, this.loginForm.value.password);
+  //   if (login == true){
+  //     this.dataHandler.loginSuccessful();
+  //     this.router.navigate(['/patient']);
+  //   }else {
+  //     alert("try again");
+  //   }
+  // }
 
   onSubmit() {
     this.getEmail();

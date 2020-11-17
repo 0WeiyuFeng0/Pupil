@@ -22,6 +22,7 @@ import { PatientCardComponent } from './pages/patient-card/patient-card.componen
 import { PatientComponent } from './pages/patient/patient.component';
 import { ListComponent } from './pages/list/list.component';
 import { DataAnalysisComponent } from './pages/data-analysis/data-analysis.component';
+import { AddInfoComponent } from './pages/add-info/add-info.component';
 
 
 
@@ -38,7 +39,8 @@ import { DataAnalysisComponent } from './pages/data-analysis/data-analysis.compo
     PatientCardComponent,
     PatientComponent,
     ListComponent,
-    DataAnalysisComponent
+    DataAnalysisComponent,
+    AddInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,30 +1,30 @@
 <div class="container-fluid row">
-    <div class="col-xl-3 col-lg-7 col-sm-12 rounded pt-4" style="background-color: darkblue; color: white;">
+    <div class="col-xl-4 col-lg-7 col-sm-12 rounded pt-4" style="background-color: darkblue; color: white;">
       <div clas="row">
         <div class="col-4 ml-2">
           <img src="https://improvementarchitecture.co.uk/wp-content/uploads/2015/02/missing-profile-picture.jpg" class="rounded float-left" style="width: 50px;">
         </div>
         <div class="col-8 ml-auto mb-3">
           <div class="row">
-            <div class="font-weight-bold">Irene Fleming</div>
+            <div class="font-weight-bold">{{firstNmae}} {{lastName}}</div>
           </div>  
           <div class="row">
-            <div>38 years old</div>
+            <div>{{birthday}}</div>
           </div>
         </div>
       </div>
       <div class="row mx-auto">
         <div class="col-4 mx-auto">
           <div class="row" style="color:lightgray;">Height</div>
-          <div class="row font-weight-bold">185</div>
+          <div class="row font-weight-bold">{{hight}}</div>
         </div>
         <div class="col-3 mx-auto">
           <div class="row">weight</div>
-          <div class="row font-weight-bold">83</div>
+          <div class="row font-weight-bold">{{weight}}</div>
         </div>
         <div class="col-5 mx-auto">
           <div class="row">Blood type</div>
-          <div class="row font-weight-bold">AB</div>
+          <div class="row font-weight-bold">{{bloodType}}</div>
         </div>
       </div>
     </div>
@@ -35,46 +35,54 @@
           Phone Number
         </div>
         <div class="row font-weight-bold">
-          7887 665 588
+          {{phoneNumber}}
         </div>
       </div>
       <div class="col-12">
         <div class="row">
-          Card Number
+          Type
         </div>
         <div class="row font-weight-bold">
-          1267678
+          {{type}}
         </div>
       </div>
     </div>
 
-    <div class="col-xl-5 col-lg-8 col-sm-12 pt-4" style="background-color:white;">
+    <div class="col-xl-3 col-lg-6 col-sm-12 pt-4" style="background-color:white;">
       <div class="col-12">
         <div class="row">
           Email
         </div>
         <div class="row font-weight-bold">
-          fengweiyulalala@gmail
+          {{email}}
         </div>
       </div>
       <div class="col-12">
         <div class="row">
-          Medical Condirions
+          Medical Condirion
         </div>
         <div class="row font-weight-bold">
-          Alegies, Astma, Coronary, Heart Disease
+          {{medicalCondition}}
         </div>
       </div>
     
     </div>
     
-    <div class="col-xl-2 col-lg-4 col-sm-12 pt-4 " style="background-color: white;;">
+    <div class="col-xl-3 col-lg-6 col-sm-12 pt-4 " style="background-color: white;;">
       <div class="col-12">
         <div class="row">
-          Passposrt
+          Provider ID
         </div>
         <div class="row font-weight-bold">
-          000345678
+          {{providerID}}
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="row">
+          Group ID
+        </div>
+        <div class="row font-weight-bold">
+          {{groupID}}
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
 
 var userEmail : boolean;
+var userType: String = "Patient";
 userEmail = false;
 
 @Component({
@@ -34,22 +35,28 @@ export class RegisterComponent implements OnInit {
 
   loginForm = this.fb.group(
     {
+      firstName: new FormControl('', [Validators.required, Validators.minLength(1)]),
+      lastName: new FormControl('', [Validators.required, Validators.minLength(1)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)] )
+      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      birthday: new FormControl('', [Validators.required, Validators.minLength(1)])
     },{
       validator: this.MustMatch('password', 'confirmPassword')
   });
 
-  
+  get registerFirstNameControl() { return this.loginForm.get('firstName'); }
+  get registerLastNameControl() { return this.loginForm.get('lastName'); }
   get registerEmailControl() { return this.loginForm.get('email'); }
   get registerPasswordControl() { return this.loginForm.get('password'); }
   get registerConfirmPasswordControl() { return this.loginForm.get('confirmPassword'); }
+  get registerBirthdayControl() { return this.loginForm.get('birthday'); }
+  // get registerTypeControl() { return this.loginForm.get('type'); }
 
 
-  addDataToDataBase(){
-    this.dataHandler.addData(this.loginForm.value.email,this.loginForm.value.password);
-  }
+  // addDataToDataBase(){
+  //   this.dataHandler.addData(this.loginForm.value.firstName,this.loginForm.value.lastName,this.loginForm.value.email,this.loginForm.value.password);
+  // }
 
   constructor(private fb: FormBuilder, public dataHandler: DataHandlerService, private router: Router) {
     this.itemList = dataHandler.getData().snapshotChanges();
@@ -78,7 +85,7 @@ export class RegisterComponent implements OnInit {
 
   addUser(){
     alert("added user");
-    this.dataHandler.addData(this.loginForm.value.email, this.loginForm.value.password);
+    this.dataHandler.addData(this.loginForm.value.firstName,this.loginForm.value.lastName,this.loginForm.value.email, this.loginForm.value.password, String(this.loginForm.value.birthday), userType);
     // addData(addEmail: String ,addPassword: String);
   }
 
@@ -88,5 +95,9 @@ export class RegisterComponent implements OnInit {
     this.getEmail();
   }
 
+  selectType(event: any){
+    userType = event.target.value;
+    // console.log(userType);
+  }
 
 }

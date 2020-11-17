@@ -18,7 +18,7 @@ export class AppComponent {
   }
 
   addDataToDataBase(){
-    this.dataHandlerService.addData("asf","asdf");
+    // this.dataHandlerService.addData("asf","asdf");
   }
 
   constructor(public auth: AuthService, public dataHandlerService: DataHandlerService) {
