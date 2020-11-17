@@ -16,6 +16,7 @@ export class DataHandlerService {
   itemsRef: AngularFireList<any>;
   userIsIn: boolean = false;
   userKey: String = null;
+  userType: String = null;
 
   constructor(db: AngularFireDatabase) {
     this.itemsRef = db.list('credentials');
@@ -52,9 +53,10 @@ export class DataHandlerService {
     });
    }
 
-   saveUser(key: String){
+   saveUser(key: String, type: String){
      this.userKey = key;
-     console.log(this.userKey);
+     this.userType = type;
+     console.log(this.userKey, this.userType);
    }
 
    getUserKey(){
@@ -107,5 +109,13 @@ export class DataHandlerService {
 
   userLogout(){
     this.userIsIn = false;
+  }
+
+  isDoctor(){
+    if(this.userType == "Doctor"){
+      return true;
+    }else{
+      return false;
+    }
   }
 }

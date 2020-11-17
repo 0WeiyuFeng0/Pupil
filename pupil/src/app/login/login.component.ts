@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         if(element.payload.val().email == this.loginForm.value.email && element.payload.val().password == this.loginForm.value.password){
           userEmail = true;
           this.dataHandler.loginSuccessful();
-          this.dataHandler.saveUser(element.key);
+          this.dataHandler.saveUser(element.key, element.payload.val().type);
           this.router.navigate(['/patient']);
         }
       });

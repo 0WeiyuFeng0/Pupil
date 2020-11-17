@@ -50,7 +50,6 @@ export class PatientCardComponent implements OnInit {
           this.providerID = element.payload.val().providerID;
           this.type = element.payload.val().type;
           this.weight = element.payload.val().weight;
-          console.log(this.groupID);
         }
       });
     });

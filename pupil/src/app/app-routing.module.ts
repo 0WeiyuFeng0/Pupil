@@ -1,3 +1,4 @@
+import { AuthDoctorGuard } from './services/auth-doctor.guard';
 import { AddInfoComponent } from './pages/add-info/add-info.component';
 import { AuthJSONGuard } from './services/auth-json.guard';
 import { PatientListComponent } from './pages/patient-list/patient-list.component';
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent,},
   { path: 'register', component: RegisterComponent,},
   { path: 'patient', component: PatientComponent, canActivate: [AuthJSONGuard],},
-  { path: 'list', component: PatientListComponent, canActivate: [AuthJSONGuard],},
+  { path: 'list', component: PatientListComponent, canActivate: [AuthJSONGuard, AuthDoctorGuard],},
   { path: 'addInfo', component: AddInfoComponent,canActivate: [AuthJSONGuard],},
   { path: '', component: LoginComponent,},
   { path: '**', component: LoginComponent,},

@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { DataHandlerService } from './../../services/data-handler.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  itemList: Observable<any>;
+  isDoctor: Boolean = false;
+
+  constructor(private router:Router, public dataHandler: DataHandlerService) {
+    this.itemList = dataHandler.getData().snapshotChanges();
+   }
+
 
   patient(){
     this.router.navigate(['/patient']);
@@ -19,6 +27,7 @@ export class SideBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isDoctor = this.dataHandler.isDoctor();
   }
 
 }
