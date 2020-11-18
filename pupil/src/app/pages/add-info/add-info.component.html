@@ -13,6 +13,14 @@
             <form [formGroup]="addInfo" class="form-addInfo" (ngSubmit)="onSubmit()">
                 <h1 class="h3 mb-3 font-weight-normal">Please Fill In Your Information</h1>
 
+                <div *ngIf="isDoctor === true">
+                  <label for="inputEmail" >Patient Email Address</label>
+                  <input type="email" id="inputEmail" class="form-control" placeholder="Patient Email address" formControlName="email">
+                  <mat-error class="text-danger" *ngIf="registerEmailControl.errors && registerEmailControl.errors.email">
+                      Enter a valid email.
+                  </mat-error><br>
+                </div>
+
                 <label for="inputPhoneNumber">Phone Number</label>
                 <input type="text" id="inputPhoneNumber" class="form-control" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" autofocus formControlName="phoneNumber">
                 <mat-error class="text-danger" *ngIf="registerPhoneNumberControl.errors">

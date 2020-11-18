@@ -14,12 +14,21 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 export class DataHandlerService {
   items: Observable<any[]>;
   itemsRef: AngularFireList<any>;
+  itemRefPatientList: AngularFireList<any>;
   userIsIn: boolean = false;
   userKey: String = null;
   userType: String = null;
+  dataBase: AngularFireDatabase;
 
-  constructor(db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase) {
     this.itemsRef = db.list('credentials');
+    // if(this.userKey != ""){
+    //   this.itemRefPatientList = db.list('credentials/'+String(this.userKey));
+    //   console.log(`credentials/${this.userKey}`);
+    // }else{
+    //   console.log("key is missing")
+    // }
+    
     // this.userIsIn = false;
     // console.log(this.itemsRef);
    }
@@ -88,6 +97,7 @@ export class DataHandlerService {
       if (addMedicalCondition != "N/A") {
         this.itemsRef.update(String(this.userKey), { medicalCondition: addMedicalCondition});
       }
+      //.child(this.userKey).push()
       //this.itemsRef.update(String(this.userKey), { phoneNumber: addPhoneNumber,  providerID: addProviderID, groupID: addGroupID, hight: addHight, weight: addWeight, bloodType: addBloodType, medicalCondition: addMedicalCondition});
     }else {
       console.log("key is N/A")
@@ -118,4 +128,13 @@ export class DataHandlerService {
       return false;
     }
   }
+
+  addPatient(addPatientEmail: String){
+    if(addPatientEmail != "N/A"){
+      this.itemsRef.update(String(this.userKey), {patientEmail: addPatientEmail});
+      // this.itemsRef.push({patientEmail: addPatientEmail});
+    }
+    // console.log(addPatientEmail);
+    // this.itemRefPatientList.push({patientEmail: addPatientEmail});
+    }
 }

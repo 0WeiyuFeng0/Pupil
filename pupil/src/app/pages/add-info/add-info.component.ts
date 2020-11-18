@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, NgForm, FormGroupDirec
 import { concat, Observable } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 var userBloodType: String = "N/A";
 var userMedicalCondition: String = "Concussion";
@@ -19,6 +20,9 @@ var userMedicalCondition: String = "Concussion";
 export class AddInfoComponent implements OnInit {
 
   itemList: Observable<any>;
+  isDoctor: Boolean = false;
+  itemsRef: AngularFireList<any>;
+  userKey: String = null;
 
 
   addInfo = this.fb.group(
@@ -28,6 +32,7 @@ export class AddInfoComponent implements OnInit {
       groupID: new FormControl(''),
       height: new FormControl(''),
       weigh: new FormControl(''),
+      email: new FormControl('', [Validators.email]),
     });
 
   get registerPhoneNumberControl() { return this.addInfo.get('phoneNumber'); }
@@ -35,20 +40,20 @@ export class AddInfoComponent implements OnInit {
   get registerGroupIDControl() { return this.addInfo.get('groupID'); }
   get registerHeightControl() { return this.addInfo.get('height'); }
   get registerWeighControl() { return this.addInfo.get('weigh'); }
+  get registerEmailControl() { return this.addInfo.get('email'); }
 
-  constructor(private fb: FormBuilder, public dataHandler: DataHandlerService, private router: Router) {
+
+  constructor(private fb: FormBuilder, public dataHandler: DataHandlerService, private router: Router, private db: AngularFireDatabase) {
     this.itemList = dataHandler.getData().snapshotChanges();
+    
     }
 
   ngOnInit(): void {
+    this.isDoctor = this.dataHandler.isDoctor();
+    this.userKey = this.dataHandler.getUserKey();
+    this.itemsRef = this.db.list(String('credentials/'+this.userKey+'/patientEmail'));
   }
 
-
-  // addUser(){
-  //   alert("added user");
-  //   this.dataHandler.addData(this.loginForm.value.firstName,this.loginForm.value.lastName,this.loginForm.value.email, this.loginForm.value.password, String(this.loginForm.value.birthday), userType);
-  //   // addData(addEmail: String ,addPassword: String);
-  // }
 
   sendInfoToDataHandler(){
 
@@ -57,6 +62,7 @@ export class AddInfoComponent implements OnInit {
     var addGroupID: String = "N/A";
     var addHight: String = "N/A";
     var addWeight: String = "N/A";
+    var addEmail: String = "N/A";
 
     if (this.addInfo.value.phoneNumber != ""){
       addPhoneNumber = this.addInfo.value.phoneNumber;
@@ -74,8 +80,12 @@ export class AddInfoComponent implements OnInit {
       addWeight = this.addInfo.value.weigh;
     }
 
-    this.dataHandler.addInfo(addPhoneNumber, addProviderID, addGroupID, addHight, addWeight, userBloodType, userMedicalCondition);
+    if(this.addInfo.value.email != ""){
+      this.itemsRef.push({patientEmail: this.addInfo.value.email});
+    }
 
+    this.dataHandler.addInfo(addPhoneNumber, addProviderID, addGroupID, addHight, addWeight, userBloodType, userMedicalCondition);
+    this.dataHandler.addPatient(addEmail);
   }
 
   onSubmit() {
