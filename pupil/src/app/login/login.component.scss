@@ -1,0 +1,60 @@
+.mainWrapper{
+    background-image: url("../../assets/images/bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    //overflow: hidden;
+}
+
+.subtitle{
+    font-size: 20px;
+    color: rgb(137, 149, 206);
+}
+
+.title{
+    position: relative;
+    top: -10px;
+    font-size: 40px;
+    color: rgb(53, 74, 160);
+}
+
+label{
+    font-size: 15px;
+    font-family: Verdana;
+    color: rgb(137, 149, 206);
+    margin:0;
+}
+
+.form-control{
+    height: 30px;
+    border-radius: 0;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+    font-family: Verdana;
+}
+
+.form-control:focus{
+    box-shadow: none;
+}
+
+.text{
+    font-family: Verdana;
+    color: rgb(137, 149, 206);
+}
+
+.round {
+    border-radius: 25px;
+    width:40%;
+}
+
+.signupButton{
+    border:none;
+    background:none;
+    color: rgb(53, 60, 160);
+}
