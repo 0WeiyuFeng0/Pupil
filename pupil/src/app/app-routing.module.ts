@@ -14,14 +14,13 @@ import { LoginComponent } from './login/login.component'
 import { from } from 'rxjs';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent,},
+  { path: 'login', component: LoginComponent,canActivate: [AuthGuard]},
   { path: 'register', component: RegisterComponent,},
   { path: 'patient', component: PatientComponent, canActivate: [AuthJSONGuard],},
   { path: 'list', component: PatientListComponent, canActivate: [AuthJSONGuard, AuthDoctorGuard],},
   { path: 'addInfo', component: AddInfoComponent,canActivate: [AuthJSONGuard],},
-  { path: '', component: LoginComponent,},
-  { path: '**', component: LoginComponent,},
-  { path: 'secret', component: SuperSecretComponent, canActivate: [AuthGuard] }
+  { path: '', component: LoginComponent,canActivate: [AuthGuard]},
+  { path: '**', component: LoginComponent,canActivate: [AuthGuard]}
 ];
 
 @NgModule({

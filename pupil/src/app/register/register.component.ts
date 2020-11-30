@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     }
 }
 
-  loginForm = this.fb.group(
+  signupForm = this.fb.group(
     {
       firstName: new FormControl('', [Validators.required, Validators.minLength(1)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(1)]),
@@ -45,18 +45,13 @@ export class RegisterComponent implements OnInit {
       validator: this.MustMatch('password', 'confirmPassword')
   });
 
-  get registerFirstNameControl() { return this.loginForm.get('firstName'); }
-  get registerLastNameControl() { return this.loginForm.get('lastName'); }
-  get registerEmailControl() { return this.loginForm.get('email'); }
-  get registerPasswordControl() { return this.loginForm.get('password'); }
-  get registerConfirmPasswordControl() { return this.loginForm.get('confirmPassword'); }
-  get registerBirthdayControl() { return this.loginForm.get('birthday'); }
-  // get registerTypeControl() { return this.loginForm.get('type'); }
+  get registerFirstNameControl() { return this.signupForm.get('firstName'); }
+  get registerLastNameControl() { return this.signupForm.get('lastName'); }
+  get registerEmailControl() { return this.signupForm.get('email'); }
+  get registerPasswordControl() { return this.signupForm.get('password'); }
+  get registerConfirmPasswordControl() { return this.signupForm.get('confirmPassword'); }
+  get registerBirthdayControl() { return this.signupForm.get('birthday'); }
 
-
-  // addDataToDataBase(){
-  //   this.dataHandler.addData(this.loginForm.value.firstName,this.loginForm.value.lastName,this.loginForm.value.email,this.loginForm.value.password);
-  // }
 
   constructor(private fb: FormBuilder, public dataHandler: DataHandlerService, private router: Router) {
     this.itemList = dataHandler.getData().snapshotChanges();
@@ -69,9 +64,9 @@ export class RegisterComponent implements OnInit {
   getEmail() {
     this.itemList.subscribe(item =>{
       item.forEach(element => {
-        if(element.payload.val().email == this.loginForm.value.email && userEmail == false){
+        if(element.payload.val().email == this.signupForm.value.email && userEmail == false){
           userEmail = true;
-          alert("Email already exist please login");
+          alert("Email already exist, please login");
           this.router.navigate(['/login']);
         }
       });
@@ -85,7 +80,7 @@ export class RegisterComponent implements OnInit {
 
   addUser(){
     alert("added user");
-    this.dataHandler.addData(this.loginForm.value.firstName,this.loginForm.value.lastName,this.loginForm.value.email, this.loginForm.value.password, String(this.loginForm.value.birthday), userType);
+    this.dataHandler.addData(this.signupForm.value.firstName,this.signupForm.value.lastName,this.signupForm.value.email, this.signupForm.value.password, String(this.signupForm.value.birthday), userType);
     // addData(addEmail: String ,addPassword: String);
   }
 

@@ -49,22 +49,12 @@ export class LoginComponent implements OnInit {
       });
       
       if(userEmail == false){
-        alert("try again");
+        alert("Either username or password is wrong!");
         }
     });
 
 
   }
-
-  // getEmail(){
-  //   var login:Boolean = this.dataHandler.checkLogin(this.loginForm.value.email, this.loginForm.value.password);
-  //   if (login == true){
-  //     this.dataHandler.loginSuccessful();
-  //     this.router.navigate(['/patient']);
-  //   }else {
-  //     alert("try again");
-  //   }
-  // }
 
   onSubmit() {
     this.getEmail();

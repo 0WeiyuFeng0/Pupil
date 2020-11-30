@@ -4,25 +4,26 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take, map, tap } from 'rxjs/operators';
+import { DataHandlerService } from './data-handler.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private dataHandlerService:DataHandlerService, private router: Router){
+  }
 
-  canActivate(next, state): Observable<boolean> {
-    return this.auth.user$.pipe(
-      take(1),
-      map(user => !!user),
-      tap(loggedIn => {
-        if (!loggedIn){
-          console.log('access denied');
-          this.router.navigate(['/login']);
-        }
-      })
-    );
+  canActivate(){
+    if(this.dataHandlerService.isUserLoggedIn() == false){
+      return true;
+    }else if (this.dataHandlerService.isDoctor() == true){
+      this.router.navigate(['/list']);
+    }
+      else{
+        this.router.navigate(['/patient'])
+      }
+      return false;
   }
   
 }

@@ -5,9 +5,6 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { concat, Observable } from 'rxjs';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
-// var userIsIn: boolean;
-// userIsIn = false;
-
 @Injectable({
   providedIn: 'root'
 })
@@ -21,39 +18,23 @@ export class DataHandlerService {
   dataBase: AngularFireDatabase;
 
   constructor(private db: AngularFireDatabase) {
-    this.itemsRef = db.list('credentials');
-    // if(this.userKey != ""){
-    //   this.itemRefPatientList = db.list('credentials/'+String(this.userKey));
-    //   console.log(`credentials/${this.userKey}`);
-    // }else{
-    //   console.log("key is missing")
-    // }
+     this.itemsRef = db.list('credentials');
+    if(this.userKey != ""){
+      this.itemRefPatientList = db.list('credentials/'+String(this.userKey));
+      console.log(`credentials/${this.userKey}`);
+    }else{
+      console.log("key is missing")
+    }
     
-    // this.userIsIn = false;
-    // console.log(this.itemsRef);
-   }
+    console.log(this.itemsRef);
+    this.userIsIn = localStorage.getItem("userIsIn")=="true" ? true : false;
+    this.userKey = localStorage.getItem("userKey");
+    this.userType = localStorage.getItem("userType");
+  }
    
    getData(){
     return this.itemsRef;
    }
-
-  // checkLogin(email: String, password:String):Boolean{
-  //   var userEmail: Boolean = false;    
-  //   this.items = this.itemsRef.valueChanges();
-  //   this.items.forEach(element => {
-  //     console.log(element);
-  //     if(element.payload.val().email == email && element.payload.val().password == password){
-  //       userEmail = true;
-  //       this.userKey = element.key;
-  //       return true;
-  //     }
-
-  //     if(userEmail == false){
-  //       return false;
-  //     }
-  //   });
-  //   return false;
-  // }
 
    getEmail(email: String){
     this.items = this.itemsRef.valueChanges();
@@ -65,7 +46,8 @@ export class DataHandlerService {
    saveUser(key: String, type: String){
      this.userKey = key;
      this.userType = type;
-     console.log(this.userKey, this.userType);
+     localStorage.setItem("userKey", this.userKey.toString());
+     localStorage.setItem("userType", this.userType.toString());
    }
 
    getUserKey(){
@@ -111,6 +93,7 @@ export class DataHandlerService {
 
   loginSuccessful(){
     this.userIsIn = true;
+    localStorage.setItem("userIsIn", this.userIsIn.toString());
   }
 
   isUserLoggedIn(){
@@ -119,6 +102,7 @@ export class DataHandlerService {
 
   userLogout(){
     this.userIsIn = false;
+    localStorage.setItem("userIsIn", this.userIsIn.toString());
   }
 
   isDoctor(){
