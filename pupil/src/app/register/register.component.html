@@ -1,0 +1,62 @@
+
+<div class="container">
+    <form [formGroup]="loginForm" class="form-signin" (ngSubmit)="onSubmit()">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+
+        <label for="inputFirstName" >First Name</label>
+        <input type="text" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus formControlName="firstName">
+        <mat-error class="text-danger" *ngIf="registerFirstNameControl.errors && registerFirstNameControl.errors.required">
+            First Name required!
+        </mat-error><br>
+
+        <label for="inputLastName" >Last Name</label>
+        <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" required autofocus formControlName="lastName">
+        <mat-error class="text-danger" *ngIf="registerLastNameControl.errors && registerLastNameControl.errors.required">
+            Last Name required!
+        </mat-error><br>
+
+        <label for="inputEmail" >Email Address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required formControlName="email">
+        <mat-error class="text-danger" *ngIf="registerEmailControl.errors && registerEmailControl.errors.required">
+            Email required!
+        </mat-error>
+        <mat-error class="text-danger" *ngIf="registerEmailControl.errors && registerEmailControl.errors.email">
+            Enter a valid email.
+        </mat-error><br>
+        
+        <label for="inputPassword">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required formControlName="password">
+        <mat-error class="text-danger" *ngIf="registerPasswordControl.errors && registerPasswordControl.errors.required">
+            Password required!
+        </mat-error>
+        <mat-error class="text-danger" *ngIf="registerPasswordControl.errors && registerPasswordControl.errors.minlength">
+            Password must be at least 8 characters long.
+        </mat-error><br>
+
+        <label for="inputconfirmPassword" >confirmPassword</label>
+        <input type="password" id="inputconfirmPassword" class="form-control" placeholder="confirmPassword" required formControlName="confirmPassword">
+        <mat-error class="text-danger" *ngIf="registerConfirmPasswordControl.errors && !registerPasswordControl.errors">
+            Passwords must match!
+        </mat-error><br>
+
+        <div class="row">
+            <div class="col-5">
+                <label for="birthday" >Birthday</label>
+                <input type="date" id="birthday" class="form-control" required formControlName="birthday">
+                <mat-error class="text-danger" *ngIf="registerBirthdayControl.errors && registerBirthdayControl.errors.required">
+                    Birthday required!
+                </mat-error><br>
+            </div>
+            <div class="col-7">
+                <label for="type" >User Type</label>
+                <select (change)="selectType($event)" class="form-control" id="type">
+                <option value="Patient">Patient</option>
+                <option value="Doctor">Doctor</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!loginForm.valid">Sign Up</button>
+    </form>
+</div>

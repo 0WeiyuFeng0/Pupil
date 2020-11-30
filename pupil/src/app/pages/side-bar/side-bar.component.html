@@ -1,0 +1,18 @@
+    <div class="text-center sticky-top">
+      <img src="https://www.w3schools.com/html/img_girl.jpg" class="rounded-circle img-fluid img-thumbnail">
+      <div class="row">
+
+        <svg (click)="patient()" width="32" height="32" viewBox="0 0 16 16" class="bi bi-person-fill mx-auto d-block mt-3" style="color: white;" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        </svg>
+
+      </div>
+
+      <div *ngIf="isDoctor === true" class="row">
+        
+        <svg (click)="list()" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list mx-auto d-block mt-3" fill="currentColor" style="color: white;" fill="currentColor"  xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+
+      </div>
+    </div>

@@ -1,5 +1,45 @@
-<h1>Welcome to Pupil!</h1>
+
+
+
+<!-- <h1>Welcome to Pupil!</h1>
 <button (click)="onClick()" class="btn btn-primary">Click Me</button>
-<div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
-<div id="textfield">A matplotlib figure:</div>
-<div id="pyplotdiv"><img id="pyplotfigure"/></div>
+
+<div id='myDiv'> -->
+  <!-- Plotly chart will be drawn inside this DIV -->
+<!-- </div>
+
+<h1>Base</h1>
+
+<div *ngIf="auth.user$ | async as user; else login">
+    <pre>
+    {{ user | json }}
+    </pre>
+    <hr>
+    <button class="button" (click)="auth.signOut()">Sign Out</button>
+
+
+</div>
+
+<div>
+    hi
+    <ul>
+        <li *ngFor = "let item of itemList | async">
+            {{item | json}}
+        </li>
+    </ul>
+    <button (click)="addDataToDataBase()" >Add</button>
+</div>
+
+<ng-template #login>
+    <button class="button" (click)="auth.googleSignin()">Login with Google</button>
+</ng-template>
+
+<nav>
+    <ul>
+        <li><a routerLink="/login" routerLinkActive="active">Login Page</a></li>
+        <li><a routerLink="/register" routerLinkActive="active">Register Page</a></li>
+    </ul>
+</nav> -->
+
+<router-outlet></router-outlet>
+
