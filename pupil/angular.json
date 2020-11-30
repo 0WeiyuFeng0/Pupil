@@ -32,7 +32,8 @@
             ],
             "scripts": [
               "src/assets/js/plotly-latest.min.js",
-              "src/assets/js/mytest.js"
+              "src/assets/js/mytest.js",
+              "src/assets/js/pyodide.js"
             ]
           },
           "configurations": {

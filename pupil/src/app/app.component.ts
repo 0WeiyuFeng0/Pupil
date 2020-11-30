@@ -4,6 +4,7 @@ import { AuthService } from './services/auth.service';
 import { auth } from 'firebase/app';
 import { Component } from '@angular/core';
 declare var generateMyChart: any;
+declare var initialPython: any;
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
   itemList: Observable<any>;
   onClick() {
     generateMyChart();
+    initialPython();
   }
 
   addDataToDataBase(){
@@ -24,4 +26,5 @@ export class AppComponent {
   constructor(public auth: AuthService, public dataHandlerService: DataHandlerService) {
     this.itemList = dataHandlerService.getData().snapshotChanges();
   }
+
 }
