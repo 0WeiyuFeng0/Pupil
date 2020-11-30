@@ -25,9 +25,6 @@ export class PatientCardComponent implements OnInit {
   type: String = "N/A"
   weight: String = "N/A"
 
-
-
-
   constructor(public dataHandler: DataHandlerService) {
     this.itemList = dataHandler.getData().snapshotChanges();
   }

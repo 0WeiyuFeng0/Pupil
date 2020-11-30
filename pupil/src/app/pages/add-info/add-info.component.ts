@@ -31,7 +31,7 @@ export class AddInfoComponent implements OnInit {
       providerID: new FormControl(''),
       groupID: new FormControl(''),
       height: new FormControl(''),
-      weigh: new FormControl(''),
+      weight: new FormControl(''),
       email: new FormControl('', [Validators.email]),
     });
 
@@ -39,7 +39,7 @@ export class AddInfoComponent implements OnInit {
   get registerProviderIDControl() { return this.addInfo.get('providerID'); }
   get registerGroupIDControl() { return this.addInfo.get('groupID'); }
   get registerHeightControl() { return this.addInfo.get('height'); }
-  get registerWeighControl() { return this.addInfo.get('weigh'); }
+  get registerWeighControl() { return this.addInfo.get('weight'); }
   get registerEmailControl() { return this.addInfo.get('email'); }
 
 
@@ -60,7 +60,7 @@ export class AddInfoComponent implements OnInit {
     var addPhoneNumber: String = "N/A";
     var addProviderID: String = "N/A";
     var addGroupID: String = "N/A";
-    var addHight: String = "N/A";
+    var addHeight: String = "N/A";
     var addWeight: String = "N/A";
     var addEmail: String = "N/A";
 
@@ -74,23 +74,24 @@ export class AddInfoComponent implements OnInit {
       addGroupID = this.addInfo.value.groupID;
     }
     if (this.addInfo.value.height != ""){
-      addHight = this.addInfo.value.height;
+      addHeight = this.addInfo.value.height;
     }
     if (this.addInfo.value.weigh != ""){
-      addWeight = this.addInfo.value.weigh;
+      addWeight = this.addInfo.value.weight;
     }
 
     if(this.addInfo.value.email != ""){
       this.itemsRef.push({patientEmail: this.addInfo.value.email});
     }
 
-    this.dataHandler.addInfo(addPhoneNumber, addProviderID, addGroupID, addHight, addWeight, userBloodType, userMedicalCondition);
+    this.dataHandler.addInfo(addPhoneNumber, addProviderID, addGroupID, addHeight, addWeight, userBloodType, userMedicalCondition);
     this.dataHandler.addPatient(addEmail);
   }
 
   onSubmit() {
 
     this.sendInfoToDataHandler();
+    this.router.navigate(['/patient']);
     
     // this.dataHandler.addInfo();
     // this.router.navigate(['/patient']);

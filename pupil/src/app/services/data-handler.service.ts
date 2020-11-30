@@ -70,7 +70,9 @@ export class DataHandlerService {
       if (addHight != "N/A") {
         this.itemsRef.update(String(this.userKey), { hight: addHight});
       }
+      console.log("ready for weight!");
       if (addWeight != "N/A") {
+        console.log("weight added!");
         this.itemsRef.update(String(this.userKey), { weight: addWeight});
       }
       if (addBloodType != "N/A") {
