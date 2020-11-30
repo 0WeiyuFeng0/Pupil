@@ -1,60 +1,41 @@
-<div class="container-fluid">
-    <div class="row">
-      <div class="col-1" style="background-color:darkblue;">
-        <app-side-bar></app-side-bar>
-      </div>
-  
-      <div class="col-11" style="background-color:white;">
-        <app-nav-bar></app-nav-bar>
-  
-        <!--
-        buttons 
-        -->
-        <div class="row">
-          <div class="container-fluid col-12" style="background-color: lightgrey;" >
-            <app-patient-card></app-patient-card>
-  
-            <div class="container-fluid row pt-4 " style="height: 100px;">
-              <h2 class="col-11">Data Analysis</h2>
-              <form class="col-1">
-                <button (click)="addInfo()" class="btn btn-warning navbar-btn">Add Information</button>
-              </form>
-            </div>
-  
-  
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-lg-6 col-md-12 p-4">
-                    <app-data-analysis></app-data-analysis>
-                </div>
-                <div class="col-lg-6 col-md-12 p-4">
-                    <app-data-analysis></app-data-analysis>
-                </div>
-              </div>
-            </div>
-  
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-lg-6 col-md-12 p-4">
-                    <app-data-analysis></app-data-analysis>
-                </div>
-                <div class="col-lg-6 col-md-12 p-4">
-                    <app-data-analysis></app-data-analysis>
-                </div>
-              </div>
-            </div>
-  
-          </div>
-
-          <!-- <div class="hidden-lg container-fluid col-3" style="background-color:darkgreen;">
-          </div> -->
-
-        </div>
-  
-  
-        
-  
+<div class="row">
+  <div class="col-sm-2 col-md-1 p-0 pb-5 sidebar" style="background-color:rgb(53, 74, 160);">
+    <app-side-bar></app-side-bar>
+  </div>
+  <div class="col-sm-10 col-md-11 p-0 pb-5" style="background-color: rgb(243, 244, 245);">
+    <!-- header -->
+    <div class="header" style="background-color:white">
+      <div class="title">
+        PATIENT CARD
       </div>
     </div>
-  
+    <!-- patient info card -->
+    <div class="pt-5" style="background-color: rgb(243, 244, 245);">
+      <div class="mx-auto" style="width:80%;">
+        <app-patient-card></app-patient-card>
+        <div class="row pt-4 " style="height: 100px;">
+          <h2 class="col-11 p-0">Data Analysis</h2>
+          <form class="col-1 p-0">
+            <button (click)="addInfo()" class="btn btn-warning navbar-btn p-0">Add Information</button>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-12 pl-0 pr-4">
+            <app-data-analysis></app-data-analysis>
+          </div>
+          <div class="col-lg-6 col-md-12 p-0">
+            <app-data-analysis></app-data-analysis>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col-lg-6 col-md-12 pl-0 pr-4">
+            <app-data-analysis></app-data-analysis>
+          </div>
+          <div class="col-lg-6 col-md-12 p-0">
+            <app-data-analysis></app-data-analysis>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
