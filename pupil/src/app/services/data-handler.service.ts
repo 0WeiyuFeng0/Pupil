@@ -104,7 +104,11 @@ export class DataHandlerService {
 
   userLogout(){
     this.userIsIn = false;
+    this.userKey = '';
+    this.userType = '';
     localStorage.setItem("userIsIn", this.userIsIn.toString());
+    localStorage.setItem("userKey", this.userKey.toString());
+    localStorage.setItem("userType", this.userType.toString());
   }
 
   isDoctor(){

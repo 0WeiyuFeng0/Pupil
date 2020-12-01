@@ -26,6 +26,11 @@ export class SideBarComponent implements OnInit {
     this.router.navigate(['/list']);
   }
 
+  logout(){
+    this.dataHandler.userLogout();
+    this.router.navigate(['/login']);
+  }
+
   ngOnInit(): void {
     this.isDoctor = this.dataHandler.isDoctor();
   }

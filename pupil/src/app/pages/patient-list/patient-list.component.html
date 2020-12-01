@@ -1,43 +1,34 @@
-
-
-<div class="container-fluid">
-
-    <div class="row">
-      <div class="col-1" style="background-color:darkblue; height: 1000px;">
-          <app-side-bar></app-side-bar>
-      </div>
-      <div class="col-11" style="background-color:white ;">
-        <app-nav-bar></app-nav-bar>
-  
-        <!--
-        buttons 
-        -->
-        <div class="row">
-          <div class="container-fluid">
-              <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-              </div>
-              
-          </div>
-        </div>
-  
-  
-        <div class="row">
-          <div class="container-fluid">
-              <app-list></app-list>
-          </div>
-        </div>
-  
+<div class="row">
+  <div class="col-sm-2 col-md-1 p-0 pb-5 sidebar" style="background-color:rgb(53, 74, 160); height:900px;">
+    <app-side-bar></app-side-bar>
+  </div>
+  <div class="col-11" style="background-color:white ;">
+    <!-- header -->
+    <div class="header" style="background-color:white">
+      <div class="title">
+        PATIENT CARD
       </div>
     </div>
-  
+
+    
+    <div class="row" style="background-color: rgb(243, 244, 245);">
+      <div class="container-fluid">
+        <div class="dropdown">
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="container-fluid">
+        <app-list></app-list>
+      </div>
+    </div>
+
   </div>
-  
-  
+</div>
