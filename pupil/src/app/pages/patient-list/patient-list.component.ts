@@ -30,7 +30,7 @@ export class PatientListComponent implements OnInit {
   getEmail(){
     this.itemList.subscribe(item =>{
       item.forEach(element => {
-        console.log(element.payload.val().patientEmail);
+        // console.log(element.payload.val().patientEmail);
       });
     });
   }
