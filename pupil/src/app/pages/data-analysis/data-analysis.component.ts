@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 declare var generateMyChart: any;
+declare var initialPython: any;
 
 @Component({
   selector: 'app-data-analysis',
@@ -10,8 +11,12 @@ export class DataAnalysisComponent implements OnInit {
 
   constructor() { }
 
+  condition: Boolean
+
   onClick() {
-    generateMyChart();
+    //generateMyChart();
+    //initialPython();
+    this.condition = true;
   }
 
   ngOnInit(): void {
