@@ -101,7 +101,7 @@ export class ListComponent implements OnInit {
           temp.sphereDiameter = String(Math.round((Number(test.sphere_diameter)*1000))/1000);
           temp.id = String(test.key);
 
-          this.testDataList.push(new TestData(test.email,test.date,test.type));
+          this.testDataList.push(new TestData(test.email,test.date,test.test_name));
           console.log(this.testDataList.length);
           console.log(this.testDataList);
         } 
