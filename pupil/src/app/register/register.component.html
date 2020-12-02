@@ -96,6 +96,9 @@
                     </button>
                 </span>
             </div>
+            <mat-error class="text-danger" *ngIf="emailexist == true">
+                email exist!
+            </mat-error><br>
         </div>
     </div>
 </div>

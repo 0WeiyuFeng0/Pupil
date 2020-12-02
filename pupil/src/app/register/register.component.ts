@@ -9,6 +9,8 @@ var userEmail : boolean;
 var userType: String = "Patient";
 userEmail = false;
 
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -60,13 +62,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   
-
+  emailexist = false;
   getEmail() {
     this.itemList.subscribe(item =>{
       item.forEach(element => {
         if(element.payload.val().email == this.signupForm.value.email && userEmail == false){
           userEmail = true;
-          alert("Email already exist, please login");
+          this.emailexist = true;
+          //alert("Email already exist, please login");
           this.router.navigate(['/login']);
         }
       });
@@ -81,6 +84,7 @@ export class RegisterComponent implements OnInit {
   addUser(){
     alert("added user");
     this.dataHandler.addData(this.signupForm.value.firstName,this.signupForm.value.lastName,this.signupForm.value.email, this.signupForm.value.password, String(this.signupForm.value.birthday), userType);
+    this.router.navigate(['/login']);
     // addData(addEmail: String ,addPassword: String);
   }
 
