@@ -32,7 +32,6 @@ export class TestViewComponent implements OnInit {
         initialPython(element.payload.val().data_list);
         // console.log(element.payload.val().data_list);
       });
-      this.getTest();
     }.bind(this));
 
   }
