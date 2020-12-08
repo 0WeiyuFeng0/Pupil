@@ -1,3 +1,4 @@
+import { AuthPatientGuard } from './services/auth-patient.guard';
 import { AuthTestDataGuard } from './services/auth-test-data.guard';
 import { TestViewComponent } from './pages/test-view/test-view.component';
 import { AuthDoctorGuard } from './services/auth-doctor.guard';
@@ -18,7 +19,7 @@ import { from } from 'rxjs';
 const routes: Routes = [
   { path: 'login', component: LoginComponent,canActivate: [AuthGuard]},
   { path: 'register', component: RegisterComponent,},
-  { path: 'patient', component: PatientComponent, canActivate: [AuthJSONGuard],},
+  { path: 'patient', component: PatientComponent, canActivate: [AuthJSONGuard, AuthPatientGuard],},
   { path: 'list', component: PatientListComponent, canActivate: [AuthJSONGuard, AuthDoctorGuard],},
   { path: 'testView', component: TestViewComponent, canActivate: [AuthJSONGuard, AuthDoctorGuard, AuthTestDataGuard],},
   { path: 'addInfo', component: AddInfoComponent,canActivate: [AuthJSONGuard],},

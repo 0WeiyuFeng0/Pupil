@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { DataHandlerService } from './../../services/data-handler.service';
@@ -15,7 +16,7 @@ export class PatientListComponent implements OnInit {
   itemsRef: AngularFireList<any>;
   userKey: String = null;
 
-  constructor(public dataHandler: DataHandlerService, private db: AngularFireDatabase) {
+  constructor(public dataHandler: DataHandlerService, private db: AngularFireDatabase, private router: Router) {
     this.itemList = dataHandler.getData().snapshotChanges();
    }
 
@@ -33,6 +34,10 @@ export class PatientListComponent implements OnInit {
         // console.log(element.payload.val().patientEmail);
       });
     });
+  }
+
+  addInfo(){
+    this.router.navigate(['/addInfo']);
   }
 
 }

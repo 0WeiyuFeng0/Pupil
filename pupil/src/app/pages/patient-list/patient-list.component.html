@@ -1,16 +1,24 @@
 <div class="row">
-  <div class="col-sm-2 col-md-1 p-0 pb-5 sidebar" style="background-color:rgb(53, 74, 160); height:900px;">
+  <div class="col-sm-2 col-md-1 p-0 pb-5 sidebar" style="background-color:rgb(53, 74, 160); ">
     <app-side-bar></app-side-bar>
   </div>
   <div class="col-11" style="background-color:white ;">
     <!-- header -->
     <div class="header" style="background-color:white">
       <div class="title">
-        PATIENT CARD
+        DOCTOR CARD
       </div>
     </div>
 
-    
+    <div class="mx-auto" style="width:80%;">
+      <app-patient-card></app-patient-card>
+      <div class="row pt-4 " style="height: 100px;">
+        <h2 class="col-11 p-0">Data Analysis</h2>
+        <form class="col-1 p-0">
+          <button (click)="addInfo()" class="btn btn-warning navbar-btn p-0">Add Information</button>
+       </form>      
+      </div>
+    </div>
     <div class="row" style="background-color: rgb(243, 244, 245);">
       <div class="container-fluid">
         <div class="dropdown">
