@@ -248,8 +248,11 @@ function initialPython(test_data)
         img_str = 'data:image/png;base64,' + base64.b64encode(buf.read()).decode('UTF-8')
         `);
         document.getElementById("pyplotfigure4").src=pyodide.globals.img_str;
-      
-      
+        var loadingElements = document.getElementsByClassName('loading');
+        for (var i=0, len=loadingElements.length|0; i<len; i=i+1|0) {
+          loadingElements[i].style.display = "none";
+        }
+    
       });
     });
 

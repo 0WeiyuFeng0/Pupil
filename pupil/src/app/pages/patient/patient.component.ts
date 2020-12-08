@@ -16,11 +16,7 @@ export class PatientComponent implements OnInit {
   userKey: String = null;
   userRef: AngularFireList<any>;
   user: Observable<any[]>;
-  first: Boolean;
-  second: Boolean;
-  third: Boolean;
-  four: Boolean;
-  //test_data: any[];
+
   
 
   
@@ -72,26 +68,6 @@ export class PatientComponent implements OnInit {
         }
       })
     });
-  }
-
-  firstClick() {
-     //generateMyChart();
-     //initialPython();
-     this.first = true;
-  }
-
-  secondClick(){
-     this.second = true;
-  }
-
-  thirdClick() {
-    //generateMyChart();
-    //initialPython();
-    this.third = true;
-  }
-
-  fourClick(){
-    this.four = true;
   }
 
 
