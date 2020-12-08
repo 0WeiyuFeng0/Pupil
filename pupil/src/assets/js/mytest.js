@@ -129,8 +129,6 @@ function initialPython(test_data)
             y1.append(float(as_list2[2].strip(" ")))
           
 
-        print("hi")
-
         x2 = []
         y2 = []
         for i in range(0,length-1):
@@ -149,11 +147,8 @@ function initialPython(test_data)
             x3.append(float(as_list2[0].strip(" ")))
             y3.append(float(as_list2[2].strip(" ")))
 
-        print("hi again")
-
         fig, (ax1) = plt.subplots(1,figsize=(6,6))
 
-        ax1.set_title('Position')
         ax1.plot(x1, y1, label = 'target')
         ax1.plot(x2, y2, label = 'left gaze')
         ax1.plot(x3, y3, label = 'right gaze')
@@ -161,7 +156,6 @@ function initialPython(test_data)
         ax1.set_xlim(-3, 3)
         ax1.set_ylim(-3, 3)
 
-        fig.suptitle('Graph')
         buf = io.BytesIO()
         fig.savefig(buf, format='png')
         buf.seek(0)
@@ -169,7 +163,7 @@ function initialPython(test_data)
         `);
 
 
-        document.getElementById("pyplotfigure1").src=pyodide.globals.img_str;
+        document.getElementById("pyplotfigure2").src=pyodide.globals.img_str;
       });
     });
 
