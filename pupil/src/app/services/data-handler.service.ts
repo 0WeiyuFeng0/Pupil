@@ -17,7 +17,13 @@ export class DataHandlerService {
   userType: String = null;
   dataBase: AngularFireDatabase;
 
+  dataRef: AngularFireList<any>;
+
+  test_data: any[];
+
+
   constructor(private db: AngularFireDatabase) {
+    // credentials
      this.itemsRef = db.list('credentials');
     if(this.userKey != ""){
       this.itemRefPatientList = db.list('credentials/'+String(this.userKey));
@@ -25,13 +31,30 @@ export class DataHandlerService {
     }else{
       console.log("key is missing")
     }
-    
-    console.log(this.itemsRef);
+
+    // test data
+    this.dataRef = db.list('test');
+
+
     this.userIsIn = localStorage.getItem("userIsIn")=="true" ? true : false;
     this.userKey = localStorage.getItem("userKey");
     this.userType = localStorage.getItem("userType");
+
   }
-   
+  
+  setTestData(test_data:any[]){
+    this.test_data = test_data;
+    console.log(this.test_data);
+  }
+
+  getTestData(){
+    
+  }
+
+  getTestDataRef(){
+    return this.dataRef;
+  }
+
    getData(){
     return this.itemsRef;
    }

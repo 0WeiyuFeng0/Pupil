@@ -62,8 +62,19 @@ function myTest() {
     alert('Welcome to custom js');
 }
 
-function initialPython()
+target_position = [];
+left_gaze_intersection = [];
+right_gaze_intersection = [];
+
+function initialPython(test_data)
 {
+  test_data.forEach(element => {
+    this.target_position.push(element.target_position);
+    this.left_gaze_intersection.push(element.left_gaze_intersection);
+    this.right_gaze_intersection.push(element.right_gaze_intersection);
+  });
+  
+  //console.log(test_data);
   languagePluginLoader.then(function () {
     console.log(pyodide.runPython(`
         import sys
@@ -74,9 +85,14 @@ function initialPython()
     pyodide.loadPackage('matplotlib').then(() => {
       // matplotlib is now available
       pyodide.loadPackage('numpy').then(()=>{
+
         // pyodide.runPython(`
         // import matplotlib.pyplot as plt
         // import io, base64
+        // import js
+
+        // data = js.test_data
+
         // x1 = (1,2,3)
         // y1 = (3,4,5) 
         // fig, (ax1) = plt.subplots(1)
@@ -87,24 +103,73 @@ function initialPython()
         // buf = io.BytesIO()
         // fig.savefig(buf, format='png')
         // buf.seek(0)
-        // img_str = 'data:image/png;base64,' + base64.b64encode(buf.read()).decode('UTF-8')`);
+        // img_str = 'data:image/png;base64,' + base64.b64encode(buf.read()).decode('UTF-8')
+        // print("hi: " + data)
+        // `);
 
         pyodide.runPython(`
-        import matplotlib.pyplot as plt
         import io, base64
-        x1 = (1,2,3)
-        y1 = (3,4,5) 
-        fig, (ax1) = plt.subplots(1)
-        fig.suptitle('A tale of 2 subplots')
-        ax1.plot(x1, y1)
-        ax1.set_ylabel('Damped oscillation')
+        import matplotlib.pyplot as plt
+        import js
 
+        target_position = js.target_position
+        left_gaze_intersection = js.left_gaze_intersection
+        right_gaze_intersection = js.right_gaze_intersection
+        length = len(target_position)
+
+
+        x1 = []
+        y1 = []
+        
+        for i in range(0,length-1):
+          if(target_position[i] != ""):
+            as_list = str(target_position[i]).strip("()")
+            as_list2 = as_list.split(",")
+            x1.append(float(as_list2[0].strip(" ")))
+            y1.append(float(as_list2[2].strip(" ")))
+          
+
+        print("hi")
+
+        x2 = []
+        y2 = []
+        for i in range(0,length-1):
+          if(left_gaze_intersection[i] != ""):
+            as_list = str(left_gaze_intersection[i]).strip("()")
+            as_list2 = as_list.split(",")
+            x2.append(float(as_list2[0].strip(" ")))
+            y2.append(float(as_list2[2].strip(" ")))
+
+        x3 = []
+        y3 = []
+        for i in range(0,length-1):
+          if(right_gaze_intersection[i] != ""):
+            as_list = str(right_gaze_intersection[i]).strip("()")
+            as_list2 = as_list.split(",")
+            x3.append(float(as_list2[0].strip(" ")))
+            y3.append(float(as_list2[2].strip(" ")))
+
+        print("hi again")
+
+        fig, (ax1) = plt.subplots(1,figsize=(6,6))
+
+        ax1.set_title('Position')
+        ax1.plot(x1, y1, label = 'target')
+        ax1.plot(x2, y2, label = 'left gaze')
+        ax1.plot(x3, y3, label = 'right gaze')
+
+        ax1.set_xlim(-3, 3)
+        ax1.set_ylim(-3, 3)
+
+        fig.suptitle('Graph')
         buf = io.BytesIO()
         fig.savefig(buf, format='png')
         buf.seek(0)
-        img_str = 'data:image/png;base64,' + base64.b64encode(buf.read()).decode('UTF-8')`);
+        img_str = 'data:image/png;base64,' + base64.b64encode(buf.read()).decode('UTF-8')
+        `);
 
-        document.getElementById("pyplotfigure").src=pyodide.globals.img_str;
+
+        document.getElementById("pyplotfigure1").src=pyodide.globals.img_str;
       });
     });
 
