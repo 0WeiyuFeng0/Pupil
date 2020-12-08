@@ -79,6 +79,10 @@ export class DataHandlerService {
      return this.userKey;
    }
 
+   getPatientUserKey(){
+    return this.userKey;
+  }
+
    addInfo(addPhoneNumber: String, addProviderID: String, addGroupID:String, addHight:String, addWeight:String, addBloodType:String, addMedicalCondition:String){
     console.log(addPhoneNumber, addProviderID, addGroupID, addHight, addWeight, addBloodType, addMedicalCondition);
     console.log(this.userKey);

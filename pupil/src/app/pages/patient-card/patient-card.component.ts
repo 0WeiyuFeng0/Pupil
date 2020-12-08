@@ -30,7 +30,7 @@ export class PatientCardComponent implements OnInit {
   }
 
   loadInfo(){
-    this.userKey = this.dataHandler.getUserKey();
+    this.userKey = this.dataHandler.getPatientUserKey();
 
     this.itemList.subscribe(item =>{
       item.forEach(element => {
