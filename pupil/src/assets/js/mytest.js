@@ -160,6 +160,7 @@ function initialPython(test_data)
         fig.savefig(buf, format='png')
         buf.seek(0)
         img_str = 'data:image/png;base64,' + base64.b64encode(buf.read()).decode('UTF-8')
+        buf.flush()
         `);
 
 
