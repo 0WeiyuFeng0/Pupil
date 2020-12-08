@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { DataHandlerService } from './../../services/data-handler.service';
 import { element } from 'protractor';
 import { Observable } from 'rxjs';
@@ -57,7 +58,7 @@ export class ListComponent implements OnInit {
 
   
 
-  constructor(private db: AngularFireDatabase, private dataHandler: DataHandlerService, private db2: AngularFireDatabase) {
+  constructor(private router:Router, private db: AngularFireDatabase, private dataHandler: DataHandlerService, private db2: AngularFireDatabase) {
     // this.itemList = dataHandler.getData().snapshotChanges();
   }
 
@@ -167,6 +168,12 @@ export class ListComponent implements OnInit {
     }.bind(this));
     // this.getTest();
     // console.log(patientEmails);
+  }
+
+  viewTest(date:String){
+    this.dataHandler.setPatientTest(date);
+    this.router.navigate(['/testView']);
+    // console.log(date);
   }
 
 }

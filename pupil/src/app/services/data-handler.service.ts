@@ -16,6 +16,7 @@ export class DataHandlerService {
   userKey: String = null;
   userType: String = null;
   dataBase: AngularFireDatabase;
+  patientTestKey: String = null;
 
   dataRef: AngularFireList<any>;
 
@@ -149,5 +150,14 @@ export class DataHandlerService {
     }
     // console.log(addPatientEmail);
     // this.itemRefPatientList.push({patientEmail: addPatientEmail});
-    }
+  }
+
+  setPatientTest(date: String){
+    this.patientTestKey = date;
+  }
+
+  getPatientTest(){
+    return this.patientTestKey;
+  }
+
 }

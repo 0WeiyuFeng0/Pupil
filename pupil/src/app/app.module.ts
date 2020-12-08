@@ -23,6 +23,7 @@ import { PatientComponent } from './pages/patient/patient.component';
 import { ListComponent } from './pages/list/list.component';
 import { DataAnalysisComponent } from './pages/data-analysis/data-analysis.component';
 import { AddInfoComponent } from './pages/add-info/add-info.component';
+import { TestViewComponent } from './pages/test-view/test-view.component';
 
 
 
@@ -40,7 +41,8 @@ import { AddInfoComponent } from './pages/add-info/add-info.component';
     PatientComponent,
     ListComponent,
     DataAnalysisComponent,
-    AddInfoComponent
+    AddInfoComponent,
+    TestViewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-sm-2 col-md-1 p-0 pb-5 sidebar" style="background-color:rgb(53, 74, 160);">
+      <app-side-bar></app-side-bar>
+    </div>
+    <div class="col-sm-10 col-md-11 p-0 pb-5" style="background-color: rgb(243, 244, 245);">
+      <!-- patient info card -->
+      <div class="pt-5" style="background-color: rgb(243, 244, 245);">
+        <div class="mx-auto" style="width:80%;">
+          <div class="row pt-4 " style="height: 100px;">
+            <h2 class="col-11 p-0">Data Analysis</h2>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-12 pl-0 pr-4">
+              <!-- data analysis component -->
+  
+              <div class="col-md-12" style="background-color: white; min-height: 450px; height: auto;">
+                <!-- <button (click)="firstClick()" class="btn btn-primary">Click Me</button> -->
+                <div class="w-75 mx-auto pt-3" id="pyplotdiv1">
+                  <img class="w-100" id="pyplotfigure1"/>
+                  <img style="width: 86%;" src="../../../assets/images/gaze_baseline.png"/>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 p-0">
+              <!-- data analysis component -->
+              <div class="col-md-12" style="background-color: white; min-height: 450px; height: auto;">
+                <!-- <button (click)="secondClick()" class="btn btn-primary">Click Me</button> -->
+                <div class="w-75 mx-auto pt-3" id="pyplotdiv2">
+                  <img class="w-100" id="pyplotfigure2"/>
+                  <img style="width: 90%;" src="../../../assets/images/gaze_data.png"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-4">
+            <div class="col-lg-6 col-md-12 pl-0 pr-4">
+              <!-- data analysis component -->
+  
+              <div class="col-md-12" style="background-color: white; min-height: 450px; height: auto;">
+                <!-- <button (click)="thirdClick()" class="btn btn-primary">Click Me</button> -->
+                <div class="w-100 mx-auto" id="pyplotdiv3">
+                  <img class="w-100" id="pyplotfigure3"/>
+                  <img class="w-100" src="../../../assets/images/global_error.png"/>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 p-0">
+              <!-- data analysis component -->
+              <div class="col-md-12" style="background-color: white; min-height: 450px; height: auto;">
+                <!-- <button (click)="fourClick()" class="btn btn-primary">Click Me</button> -->
+                <div class="w-100 mx-auto" id="pyplotdiv4">
+                  <img class="w-100" id="pyplotfigure4"/>
+                  <img class="w-100" src="../../../assets/images/local_error.png"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
