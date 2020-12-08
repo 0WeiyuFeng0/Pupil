@@ -48,7 +48,7 @@ export class PatientComponent implements OnInit {
   }
 
   getEmail(){
-    var flag = 0;
+    var flag = true;
     this.user.forEach(element => {
       element.forEach(item=>{
         if(item.payload.key == "email")
@@ -58,16 +58,14 @@ export class PatientComponent implements OnInit {
           this.testDataList.forEach(element => {
             element.forEach(item => {
               var data = item[Object.keys(item)[0]];
-              if(data.email == email)
+              if(data.email == email && flag)
               {
-                flag++;
-                if(flag==1)
-                  initialPython(data.data_list);
+                initialPython(data.data_list);
+                flag = false;
                 //this.test_data = data.data_list;
                 //console.log(this.test_data);
                 //this.dataHandler.setTestData(data.data_list);
-                
-                //flag = false;
+                      
               }
             });
           });
