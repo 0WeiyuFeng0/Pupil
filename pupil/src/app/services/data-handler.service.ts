@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { concat, Observable } from 'rxjs';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 
 @Injectable({
   providedIn: 'root'
@@ -158,6 +159,14 @@ export class DataHandlerService {
 
   getPatientTest(){
     return this.patientTestKey;
+  }
+
+  isPatientTestValid(){
+    if(this.patientTestKey != null){
+      return true;
+    }else {
+      return false;
+    }
   }
 
 }
