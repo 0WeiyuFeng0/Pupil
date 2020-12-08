@@ -2,6 +2,7 @@ import { DataHandlerService } from './../../services/data-handler.service';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Component, OnInit } from '@angular/core';
+declare var initialPython: any;
 
 @Component({
   selector: 'app-test-view',
@@ -28,7 +29,8 @@ export class TestViewComponent implements OnInit {
     this.items3.forEach(function(item){
       console.log(item);
       item.forEach(function(element){
-        console.log(element.payload.val().data_list);
+        initialPython(element.payload.val().data_list);
+        // console.log(element.payload.val().data_list);
       });
       this.getTest();
     }.bind(this));
