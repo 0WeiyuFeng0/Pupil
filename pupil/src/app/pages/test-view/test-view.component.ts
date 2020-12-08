@@ -21,6 +21,18 @@ export class TestViewComponent implements OnInit {
     this.testDate = this.dataHandler.getPatientTest();
     this.itemsRef3 = this.db2.list(String('test/'+this.testDate));
     this.items3 = this.itemsRef3.snapshotChanges();
+    this.getData();
+  }
+
+  getData(){
+    this.items3.forEach(function(item){
+      console.log(item);
+      item.forEach(function(element){
+        console.log(element.payload.val().data_list);
+      });
+      this.getTest();
+    }.bind(this));
+
   }
 
 }
